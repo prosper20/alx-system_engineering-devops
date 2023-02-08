@@ -1,0 +1,1 @@
+This directory contains scripts o shell basics, the script: 0-current_working_directory is going to print the absolute path name of the current working directory.
