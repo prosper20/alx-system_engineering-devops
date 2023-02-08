@@ -10,3 +10,4 @@ The 8-firstdelete script deletes the file betty which is in the directory /tmp/m
 The 9-firstdirdeletion script deletes the directory tmp/my_first_directory
 The 10-back script changes the working directory to the previous one.
 The 11-lists script lists all the files (including the hidden ones)in the current directory and the parent of the working directory and the /boot directory (in this order), in long format.
+The 12-file_type script prints the type of the file /tmp/iamafile.
