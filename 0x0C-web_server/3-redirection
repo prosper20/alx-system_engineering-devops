@@ -1,33 +1,7 @@
 #!/usr/bin/env bash
-# This script installs Nginx server and configures a 301 permanent redirection for /redirect_me
-
-# Update package information
+# Script that installs Nginx server and redirects /redirect_me
 apt-get -y update
-
-# Install Nginx
 apt-get -y install nginx
-
-# Create a simple HTML file for testing purposes
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
-
-# Configure Nginx for the redirection
-echo 'server {
-    listen 80;
-    server_name _;
-    
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-}' > /etc/nginx/sites-available/redirect_me
-
-# Create a symbolic link to enable the site
-ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-
-# Test Nginx configuration
-if nginx -t; then
-    # Reload Nginx to apply the new configuration
-    service nginx reload
-else
-    echo "Nginx configuration test failed. Please check your configuration."
-fi
-
+sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;/" /etc/nginx/sites-available/default
+service nginx start
