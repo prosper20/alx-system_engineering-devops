@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Script that turns on an Apache Server
+
+sudo service apache2 start
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
